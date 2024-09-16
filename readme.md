@@ -37,14 +37,11 @@ To get a local copy up and running follow these simple steps.
     npm install axios cors dotenv express request-ip
     ```
 
-5.  setup .env in client root
-    process.env.REACT_APP_CLOUDINARY_CLOUD_NAME=derhxkzhd
-
-7.  Run frontend from client directory
+4.  Run frontend from client directory
     ```sh
     npm run dev
     ```
-8.  Run backend from server directory
+5.  Run backend from server directory
     ```sh
     node index.js
     ```
