@@ -7,7 +7,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get(`${apiBaseUrl}/api/get-ip`)
+      .get(`${apiBaseUrl}api/get-ip`)
       .then((response) => {
         setIpData({
           ip: response.data.ip,
