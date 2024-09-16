@@ -9,11 +9,7 @@ const PORT = process.env.PORT || 5000;
 const ipInfoBaseUrl = process.env.IPINFO_BASE_URL;
 
 const app = express();
-app.use(
-  cors({
-    origin: "https://ip-extractor-mmb4.vercel.app",
-  })
-);
+app.use(cors());
 
 // Middleware to capture user's IP address
 app.use(requestIp.mw());
