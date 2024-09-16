@@ -1,26 +1,35 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-
 const App = () => {
-  const [ip, setIp] = useState("");
+  const [ipData, setIpData] = useState({ ip: "", location: {} });
 
   useEffect(() => {
-    // Fetch IP address from the backend API
+    // Fetch IP address and location details from the backend API
     axios
       .get("/api/get-ip")
       .then((response) => {
-        setIp(response.data.ip);
+        setIpData({
+          ip: response.data.ip,
+          location: response.data.location,
+        });
       })
       .catch((error) => {
-        console.error("Error fetching IP address:", error);
+        console.error("Error fetching IP address and location:", error);
       });
   }, []);
-console.log(ip);
+
+  const { ip, location } = ipData;
+  console.log("data = " + ipData.location?.city);
 
   return (
     <div>
       <h1>Your IP Address is: {ip}</h1>
+      <h2>Location Details:</h2>
+      <p>City: {location?.city}</p>
+      <p>Region: {location?.region}</p>
+      <p>Country: {location?.country}</p>
+      <p>Organization: {location?.org}</p>
     </div>
   );
 };
