@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const App = () => {
   const [ipData, setIpData] = useState({ ip: "", location: {} });
 
   useEffect(() => {
-    // Fetch IP address and location details from the backend API
     axios
-      .get("/api/get-ip")
+      .get(`${apiBaseUrl}/api/get-ip`)
       .then((response) => {
         setIpData({
           ip: response.data.ip,
@@ -20,6 +20,7 @@ const App = () => {
   }, []);
 
   const { ip, location } = ipData;
+  console.log("data = " + ipData.location);
   console.log("data = " + ipData.location?.city);
 
   return (
